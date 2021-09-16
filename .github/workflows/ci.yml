@@ -23,6 +23,6 @@ jobs:
         wget https://github.com/iovisor/bcc/raw/master/libbpf-tools/x86/vmlinux_505.h -O bpf/vmlinux.h
         wget http://mirrors.kernel.org/ubuntu/pool/universe/libb/libbpf/libbpf0_0.1.0-1_amd64.deb -O libbpf0_0.1.0-1_amd64.deb
         wget http://mirrors.kernel.org/ubuntu/pool/universe/libb/libbpf/libbpf-dev_0.1.0-1_amd64.deb -O libbpf-dev_0.1.0-1_amd64.deb
-        sudo apt install ./libbpf-*.deb
+        sudo apt install ./libbpf0_0.1.0-1_amd64.deb ./libbpf-dev_0.1.0-1_amd64.deb
     - name: Run Build
       run: rake
