@@ -1,6 +1,7 @@
 mruby/
 bpf/vmlinux.h
 src/*.bpf.h
+src/types.h
 
 *.out
 *.o
