@@ -20,5 +20,6 @@ jobs:
     - name: Add Packages
       run: |
         sudo apt -y install wget build-essential bison git libelf-dev libelf1 libcap2
+        wget https://github.com/iovisor/bcc/raw/master/libbpf-tools/x86/vmlinux_505.h -O bpf/vmlinux.h
     - name: Run Build
       run: rake
