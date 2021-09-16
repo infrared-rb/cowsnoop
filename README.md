@@ -1,27 +1,25 @@
-# cowsnoop   [![Build Status](https://travis-ci.org/udzura/cowsnoop.svg?branch=master)](https://travis-ci.org/udzura/cowsnoop)
-Cowsnoop class
-## install by mrbgems
-- add conf.gem line to `build_config.rb`
+# cowsnoop [![mruby](https://github.com/infrared-rb/cowsnoop/actions/workflows/ci.yml/badge.svg)](https://github.com/infrared-rb/cowsnoop/actions/workflows/ci.yml)
 
-```ruby
-MRuby::Build.new do |conf|
+cowsnoop is a BPF CO-RE binary to detect CoW commitments. 
 
-    # ... (snip) ...
+## Build && install
 
-    conf.gem :github => 'udzura/cowsnoop'
-end
-```
-## example
-```ruby
-p Cowsnoop.hi
-#=> "hi!!"
-t = Cowsnoop.new "hello"
-p t.hello
-#=> "hello"
-p t.bye
-#=> "hello bye"
+### Prerequisites
+
+- mruby's build dependencies. [See here](https://github.com/mruby/mruby/blob/master/doc/guides/compile.md)
+- mruby-libbpf, which will depend on `libelf-dev`
+- `bpftool` command
+- Kernel >= 5.9 or downloaded `vmlinux.h`
+
+### Instruction
+
+```console
+$ rake
+$ sudo install ./mruby/bin/cowsnoop /usr/local/bin
 ```
 
 ## License
+
 under the MIT License:
+
 - see LICENSE file
