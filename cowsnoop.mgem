@@ -1,0 +1,7 @@
+name: cowsnoop
+description: Cowsnoop class
+author: Uchio Kondo
+website: https://github.com/udzura/cowsnoop
+protocol: git
+repository: https://github.com/udzura/cowsnoop.git
+license: MIT
