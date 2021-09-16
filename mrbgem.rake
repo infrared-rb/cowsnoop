@@ -14,7 +14,7 @@ MRuby::Gem::Specification.new('cowsnoop') do |spec|
   end
   spec.add_dependency 'mruby-sleep'
 
-  def spec.generate_bpf_files
+  def spec.generate_bpf_files(binname)
     bpfdir = File.expand_path('./bpf', File.dirname(__FILE__))
     srcdir = File.expand_path('./src', File.dirname(__FILE__))
 
@@ -59,5 +59,5 @@ MRuby::Gem::Specification.new('cowsnoop') do |spec|
     file c_codes[0] => headers
   end
 
-  spec.generate_bpf_files
+  spec.generate_bpf_files(binname)
 end
