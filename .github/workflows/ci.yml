@@ -20,7 +20,5 @@ jobs:
     - name: Add Packages
       run: |
         sudo apt -y install wget build-essential bison git libelf-dev libelf1 libcap2
-        wget  	http://ftp.br.debian.org/debian/pool/main/l/linux/bpftool_5.10.46-4_amd64.deb -O bpftool_5.10.46-4_amd64.deb
-        sudo apt install ./bpftool_5.10.46-4_amd64.deb
     - name: Run Build
       run: rake
