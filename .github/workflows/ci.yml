@@ -19,7 +19,7 @@ jobs:
       run: gem install rake --no-document
     - name: Add Packages
       run: |
-        sudo apt -y install wget build-essential bison git libelf-dev libelf1 libcap2 libbpf-dev
+        sudo apt -y install wget build-essential bison git libelf-dev libelf1 libcap2
         wget https://github.com/iovisor/bcc/raw/master/libbpf-tools/x86/vmlinux_505.h -O bpf/vmlinux.h
         wget http://mirrors.kernel.org/ubuntu/pool/universe/libb/libbpf/libbpf0_0.1.0-1_amd64.deb -O libbpf0_0.1.0-1_amd64.deb
         wget http://mirrors.kernel.org/ubuntu/pool/universe/libb/libbpf/libbpf-dev_0.1.0-1_amd64.deb -O libbpf-dev_0.1.0-1_amd64.deb
