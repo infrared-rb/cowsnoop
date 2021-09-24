@@ -1,8 +1,10 @@
+require_relative 'mrblib/version'
+
 MRuby::Gem::Specification.new('cowsnoop') do |spec|
   spec.bins = ['cowsnoop']
   spec.license = 'MIT'
   spec.authors = 'Uchio Kondo'
-  spec.version = '0.0.1'
+  spec.version = VERSION
 
   binname = spec.bins[0]
 
@@ -13,6 +15,7 @@ MRuby::Gem::Specification.new('cowsnoop') do |spec|
     spec.add_dependency 'mruby-libbpf', github: 'infrared-rb/mruby-libbpf'
   end
   spec.add_dependency 'mruby-sleep'
+  spec.add_dependency 'mruby-metaprog'
 
   def spec.generate_bpf_files(binname)
     bpfdir = File.expand_path('./bpf', File.dirname(__FILE__))
@@ -60,4 +63,8 @@ MRuby::Gem::Specification.new('cowsnoop') do |spec|
   end
 
   spec.generate_bpf_files(binname)
+
+  # Other dependencies
+  spec.add_dependency 'mruby-signal', mgem: 'mruby-signal'
+  spec.add_dependency 'mruby-optparse', github: 'infrared-rb/mruby-optparse'
 end
