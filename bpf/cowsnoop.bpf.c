@@ -23,6 +23,8 @@ const volatile __u32 parent_pid = -1;
 static __u32 initial_value = 0;
 static bool be_true = true;
 
+const char msg[] = "Updated cloned process %d -> %d\n";
+
 struct {
   __uint(type, BPF_MAP_TYPE_HASH);
   __uint(max_entries, 10240);
@@ -64,7 +66,6 @@ int BPF_KRETPROBE(__x64_sys_clone, pid_t ret)
 
   bool *p = bpf_map_lookup_elem(&target, &ret);
   if (!p) {
-    char msg[] = "Updated cloned process %d -> %d\n";
     bpf_trace_printk(msg, sizeof(msg), pid, ret);
 
     bpf_map_update_elem(&target, &ret, &be_true, 0);
