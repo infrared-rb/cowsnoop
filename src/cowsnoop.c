@@ -53,6 +53,16 @@ static mrb_value mrb_cowsnoop_bpf_init(mrb_state *mrb, mrb_value self)
   return self;
 }
 
+static mrb_value mrb_cowsnoop_bpf_set_parent_pid(mrb_state *mrb, mrb_value self)
+{
+  struct cowsnoop_bpf *data = DATA_PTR(self);
+  mrb_int targ;
+  mrb_get_args(mrb, "i", &targ);
+
+  data->rodata->parent_pid = (__u32)targ;
+  return mrb_fixnum_value(targ);
+}
+
 static mrb_value mrb_cowsnoop_bpf_load(mrb_state *mrb, mrb_value self)
 {
   struct cowsnoop_bpf *data = DATA_PTR(self);
@@ -92,6 +102,9 @@ void mrb_cowsnoop_gem_init(mrb_state *mrb)
   struct RClass *builder;
   builder = mrb_define_class(mrb, "CowsnoopBuilder", mrb->object_class);
   mrb_define_method(mrb, builder, "initialize", mrb_cowsnoop_bpf_init, MRB_ARGS_REQ(1));
+
+  mrb_define_method(mrb, builder, "parent_pid=", mrb_cowsnoop_bpf_set_parent_pid, MRB_ARGS_REQ(1));
+
   mrb_define_method(mrb, builder, "load", mrb_cowsnoop_bpf_load, MRB_ARGS_NONE());
   mrb_define_method(mrb, builder, "attach", mrb_cowsnoop_bpf_attach, MRB_ARGS_NONE());
 

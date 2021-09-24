@@ -9,6 +9,11 @@ def __main__(_)
   parser.parse!(ARGV)
 
   bpf = CowsnoopBuilder.new(opt[:comm] || "")
+
+  if opt[:first_clone]
+    bpf.parent_pid = opt[:first_clone]
+  end
+
   bpf.load
   bpf.attach
 
