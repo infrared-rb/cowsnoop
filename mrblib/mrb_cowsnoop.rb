@@ -29,7 +29,7 @@ def __main__(_)
   }
 
   if opt[:first_clone]
-  puts "Tracking first forked chiled."
+  puts "Tracking first forked child."
     while running
       track_first_child(map)
       sleep interval
