@@ -23,6 +23,12 @@ task :compile => :mruby do
   sh "cd mruby && rake all MRUBY_CONFIG=#{MRUBY_CONFIG}"
 end
 
+desc "compile CO-RE binary"
+task :core => :mruby do
+  conf = File.expand_path("build_config/corebinary.rb")
+  sh "cd mruby && rake all MRUBY_CONFIG=#{conf}"
+end
+
 desc "test"
 task :test => :mruby do
   sh "cd mruby && rake all test MRUBY_CONFIG=#{MRUBY_CONFIG}"
